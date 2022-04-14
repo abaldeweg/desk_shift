@@ -1,0 +1,16 @@
+{
+  "profile": "Profile",
+  "username": "Username",
+  "password": "Password",
+  "changePassword": "Change Password",
+  "login": "Login",
+  "logout": "Logout",
+  "theme": "Themes",
+  "language": "Language",
+  "save": "Save",
+  "passwordError": "Password could not be changed.",
+  "passwordSuccessful": "Password changed.",
+  "wrongCredentials": "Please, check your credentials.",
+  "settings": "Settings",
+  "shifts": "Shift"
+}
