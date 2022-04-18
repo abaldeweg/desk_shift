@@ -32,7 +32,7 @@
 
     <shift-add
       :staffList="staffMembers"
-      :shift="shifts"
+      :shift="create.chosenShift"
       v-if="create.showCreateModal"
       @update="save"
       @close="create.showCreateModal = false"
@@ -65,7 +65,7 @@ export default {
 
     const toggleCreateModal = (day, shift) => {
       create.chosenDay = day
-      create.chosenShift = shifts[shift]
+      create.chosenShift = shifts.value[shift]
       create.showCreateModal = !create.showCreateModal
     }
 
