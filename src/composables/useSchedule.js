@@ -28,7 +28,6 @@ export default function useSchedule() {
   }
 
   const addService = (day, staff, starttime, endtime) => {
-    console.log('add', schedule)
     if (schedule[day] === undefined) {
       set(schedule, day, [])
     }

@@ -37,7 +37,7 @@
         </tbody>
       </table>
 
-      <shift-add
+      <schedule-add
         :staffList="staffMembers"
         :shift="create.chosenShift"
         v-if="create.showCreateModal"
@@ -52,7 +52,7 @@
 import useShift from '@/composables/useShift'
 import useStaff from '@/composables/useStaff'
 import useSchedule from '@/composables/useSchedule'
-import ShiftAdd from './../components/schedule/Add.vue'
+import ScheduleAdd from './../components/schedule/Add.vue'
 import ScheduleShow from './../components/schedule/Show.vue'
 import { reactive } from '@vue/composition-api'
 
@@ -62,7 +62,7 @@ export default {
     title: 'Shifts',
   },
   components: {
-    ShiftAdd,
+    ScheduleAdd,
     ScheduleShow,
   },
   setup() {
