@@ -49,7 +49,7 @@
       </b-container>
 
       <template #footer>
-        <b-form-group buttons>
+        <b-form-group>
           <b-form-item>
             <b-button design="primary_wide">
               {{ $t('save') }}
