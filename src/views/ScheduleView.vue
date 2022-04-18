@@ -21,6 +21,8 @@
           <tr v-for="day in daysInMonth" :key="day">
             <td>{{ getDate(day) }}</td>
             <td>
+              <schedule-show :schedule="schedule[day]" />
+
               <b-button
                 design="text"
                 type="button"
@@ -51,6 +53,7 @@ import useShift from '@/composables/useShift'
 import useStaff from '@/composables/useStaff'
 import useSchedule from '@/composables/useSchedule'
 import ShiftAdd from './../components/schedule/Add.vue'
+import ScheduleShow from './../components/schedule/Show.vue'
 import { reactive } from '@vue/composition-api'
 
 export default {
@@ -60,6 +63,7 @@ export default {
   },
   components: {
     ShiftAdd,
+    ScheduleShow,
   },
   setup() {
     const { shifts } = useShift()
