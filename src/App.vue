@@ -2,7 +2,7 @@
   <b-app>
     <b-masthead>
       <b-masthead-item type="center">
-        <router-link :to="{ name: 'shift' }">
+        <router-link :to="{ name: 'home' }">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"
@@ -21,8 +21,13 @@
     <b-container size="m" v-if="auth.state.isAuthenticated">
       <b-tabs>
         <b-tabs-link>
-          <router-link :to="{ name: 'shift' }">
-            {{ $t('shifts') }}
+          <router-link :to="{ name: 'home' }">
+            {{ $t('home') }}
+          </router-link>
+        </b-tabs-link>
+        <b-tabs-link>
+          <router-link :to="{ name: 'schedule' }">
+            {{ $t('schedule') }}
           </router-link>
         </b-tabs-link>
         <b-tabs-link>

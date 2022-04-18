@@ -1,40 +1,16 @@
-import { onMounted, reactive } from '@vue/composition-api'
 import { request } from '@/api'
+import { onMounted, ref } from '@vue/composition-api'
 
 export default function useShift() {
-  const state = reactive({
-    shifts: null,
-  })
+  const shifts = ref([])
 
-  const show = () => {
-    return request(
-      'get',
-      '/api/show',
-      {},
-      {
-        name: 'shifts.json',
-      }
-    ).then((response) => {
-      state.shifts = JSON.stringify(response.data)
+  const listShifts = () => {
+    return request('get', '/api/shift/list').then((response) => {
+      shifts.value = response.data ? JSON.parse(response.data) : []
     })
   }
 
-  onMounted(show)
+  onMounted(listShifts)
 
-  const create = () => {
-    return request('post', '/api/create').then(() => {
-      show()
-    })
-  }
-
-  const update = () => {
-    return request('put', '/api/update', {
-      name: 'shifts.json',
-      body: state.shifts,
-    }).then(() => {
-      show()
-    })
-  }
-
-  return { state, show, create, update }
+  return { shifts }
 }

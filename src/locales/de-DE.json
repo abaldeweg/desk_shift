@@ -12,5 +12,15 @@
   "passwordSuccessful": "Passwort geändert.",
   "wrongCredentials": "Bitte prüfe die Zugangsdaten.",
   "settings": "Einstellungen",
-  "shifts": "Schichten"
+  "shifts": "Schichten",
+  "day": "Tag",
+  "add_to": "Hinzufügen zu",
+  "add_shift": "Schicht hinzufügen",
+  "staff": "Mitarbeiter*in",
+  "starttime": "Startzeit",
+  "endtime": "Endzeit",
+  "welcome": "Willkommen",
+  "schedule": "Planer",
+  "shift": "Schicht",
+  "home": "Start"
 }

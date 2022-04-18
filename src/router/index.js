@@ -10,15 +10,20 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'index',
-      redirect: { name: 'shift' },
+      redirect: { name: 'home' },
     },
     {
-      path: '/shift',
-      name: 'shift',
-      component: () => import('../views/ShiftView'),
+      path: '/home',
+      name: 'home',
+      component: () => import('../views/HomeView'),
       props: (route) => ({
         is404: route.params.is404,
       }),
+    },
+    {
+      path: '/schedule',
+      name: 'schedule',
+      component: () => import('../views/ScheduleView'),
     },
     {
       path: '/profile',
@@ -27,7 +32,7 @@ const router = new VueRouter({
     },
     {
       path: '*',
-      redirect: { name: 'shift', params: { is404: true } },
+      redirect: { name: 'home', params: { is404: true } },
     },
   ],
   scrollBehavior() {

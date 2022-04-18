@@ -12,5 +12,15 @@
   "passwordSuccessful": "Password changed.",
   "wrongCredentials": "Please, check your credentials.",
   "settings": "Settings",
-  "shifts": "Shift"
+  "shifts": "Shift",
+  "day": "Day",
+  "add_to": "Add to",
+  "add_shift": "Add Shift",
+  "staff": "Staff",
+  "starttime": "Start Time",
+  "endtime": "End Time",
+  "welcome": "Welcome",
+  "schedule": "Schedule",
+  "shift": "Shift",
+  "home": "Home"
 }

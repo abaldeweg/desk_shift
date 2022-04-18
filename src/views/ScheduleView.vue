@@ -1,7 +1,7 @@
 <template>
   <article>
     <b-container size="m">
-      <h1>{{ $t('shifts') }}</h1>
+      <h1>{{ $t('schedule') }}</h1>
     </b-container>
 
     <b-container size="m">
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ShiftEdit from '../components/shift/Edit.vue'
+import ShiftEdit from '../components/schedule/Edit.vue'
 
 export default {
   name: 'shift-view',
