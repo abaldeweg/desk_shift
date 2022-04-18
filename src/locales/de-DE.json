@@ -22,5 +22,6 @@
   "welcome": "Willkommen",
   "schedule": "Planer",
   "shift": "Schicht",
-  "home": "Start"
+  "home": "Start",
+  "add_service": "Dienst hinzufügen"
 }

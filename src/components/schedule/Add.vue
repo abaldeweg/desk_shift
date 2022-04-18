@@ -11,7 +11,7 @@
   >
     <b-modal @close="$emit('close')">
       <template #title>
-        {{ $t('add_shift') }}
+        {{ $t('add_service') }}
       </template>
 
       <b-container size="l">
