@@ -21,7 +21,14 @@
           <tr v-for="day in daysInMonth" :key="day">
             <td>{{ getDate(day) }}</td>
             <td>
-              <schedule-show :schedule="schedule[day]" />
+              <div class="shifts">
+                <schedule-show
+                  :item="item"
+                  :staff="staffMembers"
+                  v-for="(item, index) in schedule[day]"
+                  :key="'item-' + index"
+                />
+              </div>
 
               <b-button
                 design="text"
@@ -100,3 +107,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.shifts {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>

@@ -1,9 +1,9 @@
-import { computed, onMounted, reactive, set } from '@vue/composition-api'
+import { computed, onMounted, ref } from '@vue/composition-api'
 import { request } from '@/api'
 import dayjs from 'dayjs'
 
 export default function useSchedule() {
-  let schedule = reactive({})
+  let schedule = ref({})
 
   const daysInMonth = computed(() => {
     return dayjs().daysInMonth()
@@ -12,7 +12,7 @@ export default function useSchedule() {
   const showSchedule = () => {
     return request('get', '/api/schedule/show').then((response) => {
       if (response.data) {
-        set(schedule, JSON.parse(response.data))
+        schedule.value = JSON.parse(response.data)
       }
     })
   }
@@ -20,19 +20,18 @@ export default function useSchedule() {
   onMounted(showSchedule)
 
   const update = () => {
-    return request('put', '/api/shift/update', {
-      body: schedule,
-    }).then(() => {
-      showSchedule()
+    console.log(schedule)
+    return request('put', '/api/schedule/update', {
+      body: schedule.value,
     })
   }
 
   const addService = (day, staff, starttime, endtime) => {
-    if (schedule[day] === undefined) {
-      set(schedule, day, [])
+    if (schedule.value[day] === undefined) {
+      schedule.value[day] = []
     }
 
-    schedule[day].push({
+    schedule.value[day].push({
       staff,
       starttime,
       endtime,
