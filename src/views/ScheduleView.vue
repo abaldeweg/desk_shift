@@ -5,10 +5,6 @@
     </b-container>
 
     <b-container size="m">
-      <!-- debug -->
-      <pre><code>{{ schedule }}</code></pre>
-      <!-- /debug -->
-
       <table>
         <thead>
           <tr>
@@ -21,24 +17,28 @@
           <tr v-for="day in daysInMonth" :key="day">
             <td>{{ getDate(day) }}</td>
             <td>
+              <div class="actions">
+                <b-button
+                  design="text"
+                  type="button"
+                  v-for="(shift, index) in shifts"
+                  :key="index"
+                  @click="toggleCreateModal(day, index)"
+                >
+                  {{ $t('add_to') }} {{ shifts[index].name }}
+                </b-button>
+              </div>
+
               <div class="shifts">
                 <schedule-show
                   :item="item"
                   :staff="staffMembers"
+                  :day="day"
                   v-for="(item, index) in schedule[day]"
                   :key="'item-' + index"
+                  @remove="removeService"
                 />
               </div>
-
-              <b-button
-                design="text"
-                type="button"
-                v-for="(shift, index) in shifts"
-                :key="index"
-                @click="toggleCreateModal(day, index)"
-              >
-                {{ $t('add_to') }} {{ shifts[index].name }}
-              </b-button>
             </td>
           </tr>
         </tbody>
@@ -75,7 +75,8 @@ export default {
   setup() {
     const { shifts } = useShift()
     const { staffMembers } = useStaff()
-    const { daysInMonth, getDate, schedule, addService } = useSchedule()
+    const { daysInMonth, getDate, schedule, addService, removeService } =
+      useSchedule()
 
     const create = reactive({
       showCreateModal: false,
@@ -103,6 +104,7 @@ export default {
       staffMembers,
       toggleCreateModal,
       save,
+      removeService,
     }
   },
 }
@@ -112,5 +114,8 @@ export default {
 .shifts {
   display: flex;
   flex-wrap: wrap;
+}
+.actions {
+  text-align: right;
 }
 </style>

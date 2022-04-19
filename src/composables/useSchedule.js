@@ -1,6 +1,7 @@
 import { computed, onMounted, ref } from '@vue/composition-api'
 import { request } from '@/api'
 import dayjs from 'dayjs'
+import { findIndex } from 'lodash'
 
 export default function useSchedule() {
   let schedule = ref({})
@@ -40,6 +41,15 @@ export default function useSchedule() {
     update()
   }
 
+  const removeService = (data) => {
+    const index = findIndex(schedule.value[data.day], (item) => {
+      return item === data.item
+    })
+    schedule.value[data.day].splice(index, 1)
+
+    update()
+  }
+
   const getDate = (day) => {
     let year = dayjs().year()
     let month = dayjs().month() + 1
@@ -47,5 +57,5 @@ export default function useSchedule() {
     return dayjs(year + '-' + month + '-' + day).format('dd. DD.MM.')
   }
 
-  return { schedule, daysInMonth, getDate, addService }
+  return { schedule, daysInMonth, getDate, addService, removeService }
 }
