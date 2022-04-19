@@ -26,11 +26,6 @@
           </router-link>
         </b-tabs-link>
         <b-tabs-link>
-          <router-link :to="{ name: 'schedule' }">
-            {{ $t('schedule') }}
-          </router-link>
-        </b-tabs-link>
-        <b-tabs-link>
           <router-link :to="{ name: 'profile' }">
             {{ $t('settings') }}
           </router-link>
