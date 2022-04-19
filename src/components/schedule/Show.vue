@@ -10,7 +10,7 @@
 
 <script>
 import { computed, toRefs } from '@vue/composition-api'
-import find from 'lodash/find'
+import { find } from 'lodash'
 
 export default {
   name: 'schedule-show',
