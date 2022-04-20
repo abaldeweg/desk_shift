@@ -1,7 +1,7 @@
 import { computed, onMounted, ref } from '@vue/composition-api'
 import { request } from '@/api'
 import dayjs from 'dayjs'
-import { find, findIndex } from 'lodash'
+import { find, findIndex, sortBy } from 'lodash'
 import useStaff from './useStaff'
 
 export default function useSchedule() {
@@ -39,6 +39,8 @@ export default function useSchedule() {
       starttime,
       endtime,
     })
+
+    schedule.value[day] = sortBy(schedule.value[day], ['starttime', 'endtime'])
 
     update()
   }
