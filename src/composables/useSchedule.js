@@ -1,9 +1,12 @@
 import { computed, onMounted, ref } from '@vue/composition-api'
 import { request } from '@/api'
 import dayjs from 'dayjs'
-import { findIndex } from 'lodash'
+import { find, findIndex } from 'lodash'
+import useStaff from './useStaff'
 
 export default function useSchedule() {
+  const { staffMembers } = useStaff()
+
   let schedule = ref({})
 
   const daysInMonth = computed(() => {
@@ -21,7 +24,6 @@ export default function useSchedule() {
   onMounted(showSchedule)
 
   const update = () => {
-    console.log(schedule)
     return request('put', '/api/schedule/update', {
       body: schedule.value,
     })
@@ -57,5 +59,30 @@ export default function useSchedule() {
     return dayjs(year + '-' + month + '-' + day).format('dd. DD.MM.')
   }
 
-  return { schedule, daysInMonth, getDate, addService, removeService }
+  const currentlyOnDuty = computed(() => {
+    const service = find(schedule.value[dayjs().date()], (item) => {
+      const now = dayjs().format('HH:mm')
+      if (now >= item.starttime && now <= item.endtime) {
+        return true
+      }
+      return false
+    })
+
+    if (service === undefined) return null
+
+    const staff = find(staffMembers.value, {
+      key: parseInt(service.staff),
+    })
+
+    return staff ? staff : null
+  })
+
+  return {
+    schedule,
+    daysInMonth,
+    getDate,
+    addService,
+    removeService,
+    currentlyOnDuty,
+  }
 }

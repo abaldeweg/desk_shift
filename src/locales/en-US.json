@@ -23,5 +23,9 @@
   "schedule": "Schedule",
   "shift": "Shift",
   "home": "Home",
-  "add_service": "Add Service"
+  "add_service": "Add Service",
+  "now_on_call": "Now On-Call",
+  "manage": "Manage",
+  "phone": "Phone",
+  "nobody_on_call": "Currently, nobody is on-call."
 }

@@ -23,5 +23,9 @@
   "schedule": "Planer",
   "shift": "Schicht",
   "home": "Start",
-  "add_service": "Dienst hinzufügen"
+  "add_service": "Dienst hinzufügen",
+  "now_on_call": "Jetzt in Bereitschaft",
+  "manage": "Verwalten",
+  "phone": "Telefon",
+  "nobody_on_call": "Aktuell hat niemand Bereitschaft."
 }
