@@ -1,7 +1,7 @@
 import { computed, onMounted, ref } from '@vue/composition-api'
 import { request } from '@/api'
 import dayjs from 'dayjs'
-import { find, findIndex, sortBy } from 'lodash'
+import { find, findIndex, findLast, sortBy } from 'lodash'
 import useStaff from './useStaff'
 
 export default function useSchedule() {
@@ -62,9 +62,9 @@ export default function useSchedule() {
   }
 
   const currentlyOnDuty = computed(() => {
-    const service = find(schedule.value[dayjs().date()], (item) => {
+    const service = findLast(schedule.value[dayjs().date()], (item) => {
       const now = dayjs().format('HH:mm')
-      if (now >= item.starttime && now <= item.endtime) {
+      if (now >= item.starttime) {
         return true
       }
       return false
