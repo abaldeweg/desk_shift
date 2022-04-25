@@ -38,6 +38,15 @@
       </b-tabs>
     </b-container>
 
+    <b-container size="m">
+      <b-alert type="warning">
+        <p>
+          This is a very early preview. Please bear in mind there are many
+          features missing and bugs can occur.
+        </p>
+      </b-alert>
+    </b-container>
+
     <router-view :auth="auth" v-if="auth.state.isAuthenticated" />
 
     <b-container size="s" v-if="!auth.state.isAuthenticated">
