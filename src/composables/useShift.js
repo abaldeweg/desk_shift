@@ -6,7 +6,7 @@ export default function useShift() {
 
   const listShifts = () => {
     return request('get', '/api/shift/list').then((response) => {
-      shifts.value = response.data ? JSON.parse(response.data) : []
+      shifts.value = response.data ? response.data : []
     })
   }
 

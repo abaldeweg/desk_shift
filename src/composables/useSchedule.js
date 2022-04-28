@@ -16,7 +16,7 @@ export default function useSchedule() {
   const showSchedule = () => {
     return request('get', '/api/schedule/show').then((response) => {
       if (response.data) {
-        schedule.value = JSON.parse(response.data)
+        schedule.value = response.data
       }
     })
   }

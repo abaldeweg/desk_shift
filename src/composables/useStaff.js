@@ -6,7 +6,7 @@ export default function useStaff() {
 
   const listStaff = () => {
     return request('get', '/api/staff/list').then((response) => {
-      staffMembers.value = response.data ? JSON.parse(response.data) : []
+      staffMembers.value = response.data ? response.data : []
     })
   }
 
