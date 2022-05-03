@@ -99,7 +99,7 @@ export default {
     )
 
     const saveForwarding = () => {
-      request('put', '', {
+      request('put', '/w0/phonelines/p0/forwardings', {
         forwardings: [
           {
             destination: phone.value,
