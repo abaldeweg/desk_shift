@@ -26,6 +26,11 @@ const router = new VueRouter({
       component: () => import('../views/ScheduleView'),
     },
     {
+      path: '/call',
+      name: 'call',
+      component: () => import('../views/CallView'),
+    },
+    {
       path: '/profile',
       name: 'profile',
       component: () => import('../views/ProfileView'),

@@ -27,5 +27,6 @@
   "now_on_call": "Now On-Call",
   "manage": "Manage",
   "phone": "Phone",
-  "nobody_on_call": "Currently, nobody is on-call."
+  "nobody_on_call": "Currently, nobody is on-call.",
+  "call": "call"
 }
