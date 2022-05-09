@@ -29,7 +29,11 @@
           </b-form-item>
           <b-form-item>
             <b-form-helpline>
-              Please provide the token name and the Personal Access Token.
+              Please provide the token name and the Personal Access Token. You
+              can receive one at
+              <a href="https://app.sipgate.com/w0/personal-access-token"
+                >https://app.sipgate.com/w0/personal-access-token</a
+              >.
             </b-form-helpline>
           </b-form-item>
           <b-form-item>
