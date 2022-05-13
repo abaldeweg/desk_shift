@@ -8,6 +8,11 @@
       <h2>{{ $t('now_on_call') }}</h2>
       <div class="staff">{{ currentlyOnDuty.value }}</div>
       <div class="phone">{{ $t('phone') }}: {{ currentlyOnDuty.phone }}</div>
+      <b-button design="outline_danger" @click="resetForwarding"
+        >Reset</b-button
+      >
+      <b-button design="primary" @click="saveForwarding">Set</b-button>
+      <p>Currently, you have to set and reset a phone number manually.</p>
     </b-container>
 
     <b-container size="m" v-else>
@@ -28,6 +33,7 @@
 <script>
 import dayjs from 'dayjs'
 import useSchedule from './../composables/useSchedule'
+import { request } from './../api'
 
 export default {
   name: 'home-view',
@@ -39,7 +45,19 @@ export default {
 
     const { currentlyOnDuty } = useSchedule()
 
-    return { month, currentlyOnDuty }
+    const saveForwarding = () => {
+      request('put', 'api/call/update', {
+        destination: currentlyOnDuty.value.phone,
+        timeout: 0,
+        active: true,
+      })
+    }
+
+    const resetForwarding = () => {
+      request('put', 'api/call/reset', [])
+    }
+
+    return { month, currentlyOnDuty, saveForwarding, resetForwarding }
   },
 }
 </script>
