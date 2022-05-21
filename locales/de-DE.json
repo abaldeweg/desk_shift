@@ -6,7 +6,6 @@
   "login": "Login",
   "logout": "Logout",
   "theme": "Themes",
-  "language": "Sprache",
   "save": "Speichern",
   "passwordError": "Passwort konnte nicht geändert werden.",
   "passwordSuccessful": "Passwort geändert.",
@@ -15,18 +14,16 @@
   "shifts": "Schichten",
   "day": "Tag",
   "add_to": "Hinzufügen zu",
-  "add_shift": "Schicht hinzufügen",
   "staff": "Mitarbeiter*in",
   "starttime": "Startzeit",
   "endtime": "Endzeit",
   "welcome": "Willkommen",
   "schedule": "Planer",
-  "shift": "Schicht",
   "home": "Start",
   "add_service": "Dienst hinzufügen",
   "now_on_call": "Jetzt in Bereitschaft",
   "manage": "Verwalten",
   "phone": "Telefon",
   "nobody_on_call": "Aktuell hat niemand Bereitschaft.",
-  "call": "Anrufe"
+  "currently_you_have_to_set_and_reset_a_phone_number_manually": "Derzeit musst du eine Telefonnummer manuell festlegen und zurücksetzen."
 }

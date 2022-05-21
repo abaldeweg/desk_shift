@@ -1,66 +1,59 @@
-<template>
-  <article>
-    <b-container size="m">
-      <h1>{{ $t('welcome') }}</h1>
-    </b-container>
-
-    <b-container size="m" v-if="currentlyOnDuty">
-      <h2>{{ $t('now_on_call') }}</h2>
-      <div class="staff">{{ currentlyOnDuty.value }}</div>
-      <div class="phone">{{ $t('phone') }}: {{ currentlyOnDuty.phone }}</div>
-      <b-button design="outline_danger" @click="resetForwarding"
-        >Reset</b-button
-      >
-      <b-button design="primary" @click="saveForwarding">Set</b-button>
-      <p>Currently, you have to set and reset a phone number manually.</p>
-    </b-container>
-
-    <b-container size="m" v-else>
-      <b-alert type="warning">
-        <p>{{ $t('nobody_on_call') }}</p>
-      </b-alert>
-    </b-container>
-
-    <b-container size="m">
-      <h2>{{ $t('manage') }}</h2>
-      <router-link :to="{ name: 'schedule' }"
-        >{{ $t('schedule') }} ({{ month }})</router-link
-      >
-    </b-container>
-  </article>
-</template>
-
-<script>
-import dayjs from 'dayjs'
-import useSchedule from './../composables/useSchedule'
+<script setup>
+import { useTitle } from '@baldeweg/ui'
 import { request } from './../api'
+import useSchedule from './../composables/useSchedule.js'
+import dayjs from 'dayjs'
 
-export default {
-  name: 'home-view',
-  head: {
-    title: 'Home',
-  },
-  setup() {
-    const month = dayjs().format('MMMM')
+defineProps({
+  auth: Object,
+})
 
-    const { currentlyOnDuty } = useSchedule()
+useTitle({ title: 'Home' })
 
-    const saveForwarding = () => {
-      request('put', 'api/call/update', {
-        destination: currentlyOnDuty.value.phone,
-        timeout: 0,
-        active: true,
-      })
-    }
+const month = dayjs().format('MMMM')
 
-    const resetForwarding = () => {
-      request('put', 'api/call/reset', [])
-    }
+const { currentlyOnDuty } = useSchedule()
 
-    return { month, currentlyOnDuty, saveForwarding, resetForwarding }
-  },
+const saveForwarding = () => {
+  request('put', 'api/call/update', {
+    destination: currentlyOnDuty.value.phone,
+    timeout: 0,
+    active: true,
+  })
+}
+
+const resetForwarding = () => {
+  request('put', 'api/call/reset', [])
 }
 </script>
+
+<template>
+  <BContainer size="m">
+    <h1>{{ $t('welcome') }}</h1>
+  </BContainer>
+
+  <BContainer size="m" v-if="currentlyOnDuty">
+    <h2>{{ $t('now_on_call') }}</h2>
+    <div class="staff">{{ currentlyOnDuty.value }}</div>
+    <div class="phone">{{ $t('phone') }}: {{ currentlyOnDuty.phone }}</div>
+    <BButton design="outline_danger" @click="resetForwarding">Reset</BButton>
+    <BButton design="primary" @click="saveForwarding">Set</BButton>
+    <p>$t('currently_you_have_to_set_and_reset_a_phone_number_manually')</p>
+  </BContainer>
+
+  <BContainer size="m" v-else>
+    <BAlert type="warning">
+      <p>{{ $t('nobody_on_call') }}</p>
+    </BAlert>
+  </BContainer>
+
+  <BContainer size="m">
+    <h2>{{ $t('manage') }}</h2>
+    <RouterLink :to="{ name: 'schedule' }">
+      {{ $t('schedule') }} ({{ month }})
+    </RouterLink>
+  </BContainer>
+</template>
 
 <style scoped>
 .staff {

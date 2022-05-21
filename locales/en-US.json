@@ -6,7 +6,6 @@
   "login": "Login",
   "logout": "Logout",
   "theme": "Themes",
-  "language": "Language",
   "save": "Save",
   "passwordError": "Password could not be changed.",
   "passwordSuccessful": "Password changed.",
@@ -15,18 +14,16 @@
   "shifts": "Shift",
   "day": "Day",
   "add_to": "Add to",
-  "add_shift": "Add Shift",
   "staff": "Staff",
   "starttime": "Start Time",
   "endtime": "End Time",
   "welcome": "Welcome",
   "schedule": "Schedule",
-  "shift": "Shift",
   "home": "Home",
   "add_service": "Add Service",
   "now_on_call": "Now On-Call",
   "manage": "Manage",
   "phone": "Phone",
   "nobody_on_call": "Currently, nobody is on-call.",
-  "call": "call"
+  "currently_you_have_to_set_and_reset_a_phone_number_manually": "Currently, you have to set and reset a phone number manually."
 }

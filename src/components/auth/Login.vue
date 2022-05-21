@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import { ref, watch } from '@vue/composition-api'
-import useAuth from '@/composables/useAuth'
+import { ref, watch } from 'vue'
+import useAuth from '@/composables/useAuth.js'
 
 export default {
   name: 'auth-login',

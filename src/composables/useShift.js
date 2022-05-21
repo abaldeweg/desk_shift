@@ -1,5 +1,5 @@
 import { request } from '@/api'
-import { onMounted, ref } from '@vue/composition-api'
+import { onMounted, ref } from 'vue'
 
 export default function useShift() {
   const shifts = ref([])

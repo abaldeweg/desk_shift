@@ -1,8 +1,8 @@
-import { computed, onMounted, ref } from '@vue/composition-api'
+import { computed, onMounted, ref } from 'vue'
 import { request } from '@/api'
 import dayjs from 'dayjs'
 import { find, findIndex, findLast, sortBy } from 'lodash'
-import useStaff from './useStaff'
+import useStaff from './useStaff.js'
 
 export default function useSchedule() {
   const { staffMembers } = useStaff()

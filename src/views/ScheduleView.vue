@@ -1,114 +1,95 @@
-<template>
-  <article>
-    <b-container size="m">
-      <h1>{{ $t('schedule') }}</h1>
-    </b-container>
+<script setup>
+import { useTitle } from '@baldeweg/ui'
+import useShift from '@/composables/useShift.js'
+import useStaff from '@/composables/useStaff.js'
+import useSchedule from '@/composables/useSchedule.js'
+import ScheduleAdd from './../components/schedule/ScheduleAdd.vue'
+import ScheduleShow from './../components/schedule/ScheduleShow.vue'
+import { reactive } from 'vue'
 
-    <b-container size="m">
-      <table>
-        <thead>
-          <tr>
-            <th>{{ $t('day') }}</th>
-            <th>{{ $t('shifts') }}</th>
-          </tr>
-        </thead>
+defineProps({
+  auth: Object,
+})
 
-        <tbody>
-          <tr v-for="day in daysInMonth" :key="day">
-            <td>{{ getDate(day) }}</td>
-            <td>
-              <div class="actions">
-                <b-button
-                  design="text"
-                  type="button"
-                  v-for="(shift, index) in shifts"
-                  :key="index"
-                  @click="toggleCreateModal(day, index)"
-                >
-                  {{ $t('add_to') }} {{ shifts[index].name }}
-                </b-button>
-              </div>
+useTitle({ name: 'Schedule' })
 
-              <div class="shifts">
-                <schedule-show
-                  :item="item"
-                  :staff="staffMembers"
-                  :day="day"
-                  v-for="(item, index) in schedule[day]"
-                  :key="'item-' + index"
-                  @remove="removeService"
-                />
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+const { shifts } = useShift()
+const { staffMembers } = useStaff()
+const { daysInMonth, getDate, schedule, addService, removeService } =
+  useSchedule()
 
-      <schedule-add
-        :staffList="staffMembers"
-        :shift="create.chosenShift"
-        v-if="create.showCreateModal"
-        @update="save"
-        @close="create.showCreateModal = false"
-      />
-    </b-container>
-  </article>
-</template>
+const create = reactive({
+  showCreateModal: false,
+  chosenDay: null,
+  chosenShift: null,
+})
 
-<script>
-import useShift from '@/composables/useShift'
-import useStaff from '@/composables/useStaff'
-import useSchedule from '@/composables/useSchedule'
-import ScheduleAdd from './../components/schedule/Add.vue'
-import ScheduleShow from './../components/schedule/Show.vue'
-import { reactive } from '@vue/composition-api'
+const toggleCreateModal = (day, shift) => {
+  create.chosenDay = day
+  create.chosenShift = shifts.value[shift]
+  create.showCreateModal = !create.showCreateModal
+}
 
-export default {
-  name: 'shift-view',
-  head: {
-    title: 'Shifts',
-  },
-  components: {
-    ScheduleAdd,
-    ScheduleShow,
-  },
-  setup() {
-    const { shifts } = useShift()
-    const { staffMembers } = useStaff()
-    const { daysInMonth, getDate, schedule, addService, removeService } =
-      useSchedule()
-
-    const create = reactive({
-      showCreateModal: false,
-      chosenDay: null,
-      chosenShift: null,
-    })
-
-    const toggleCreateModal = (day, shift) => {
-      create.chosenDay = day
-      create.chosenShift = shifts.value[shift]
-      create.showCreateModal = !create.showCreateModal
-    }
-
-    const save = (data) => {
-      addService(create.chosenDay, data.staff, data.starttime, data.endtime)
-      create.showCreateModal = false
-    }
-
-    return {
-      daysInMonth,
-      create,
-      getDate,
-      schedule,
-      shifts,
-      staffMembers,
-      toggleCreateModal,
-      save,
-      removeService,
-    }
-  },
+const save = (data) => {
+  addService(create.chosenDay, data.staff, data.starttime, data.endtime)
+  create.showCreateModal = false
 }
 </script>
+
+<template>
+  <BContainer size="m">
+    <h1>{{ $t('schedule') }}</h1>
+  </BContainer>
+
+  <BContainer size="m">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ $t('day') }}</th>
+          <th>{{ $t('shifts') }}</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="day in daysInMonth" :key="day">
+          <td>{{ getDate(day) }}</td>
+          <td>
+            <div class="actions">
+              <BButton
+                design="text"
+                type="button"
+                v-for="(shift, index) in shifts"
+                :key="index"
+                @click="toggleCreateModal(day, index)"
+              >
+                {{ $t('add_to') }} {{ shifts[index].name }}
+              </BButton>
+            </div>
+
+            <div class="shifts">
+              <ScheduleShow
+                :item="item"
+                :staff="staffMembers"
+                :day="day"
+                v-for="(item, index) in schedule[day]"
+                :key="'item-' + index"
+                @remove="removeService"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ScheduleAdd
+      :staffList="staffMembers"
+      :shift="create.chosenShift"
+      v-if="create.showCreateModal"
+      @update="save"
+      @close="create.showCreateModal = false"
+    />
+  </BContainer>
+</template>
 
 <style scoped>
 .shifts {

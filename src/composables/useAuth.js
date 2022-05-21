@@ -1,4 +1,4 @@
-import { onMounted, reactive } from '@vue/composition-api'
+import { onMounted, reactive } from 'vue'
 import Cookies from 'js-cookie'
 import { initializeApp } from 'firebase/app'
 import {
@@ -21,8 +21,8 @@ export const state = reactive({
 
 export default function useAuth() {
   const firebaseConfig = {
-    apiKey: process.env.VUE_APP_API_KEY,
-    authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+    apiKey: import.meta.env.VUE_APP_API_KEY,
+    authDomain: import.meta.env.VUE_APP_AUTH_DOMAIN,
   }
 
   const app = initializeApp(firebaseConfig)

@@ -1,3 +1,14 @@
+<script setup>
+import { useLocale, useTheme } from '@baldeweg/ui'
+import AuthLogin from '@/components/auth/Login.vue'
+import useAuth from '@/composables/useAuth.js'
+
+useLocale()
+useTheme()
+
+const auth = useAuth()
+</script>
+
 <template>
   <b-app>
     <b-masthead>
@@ -23,11 +34,6 @@
         <b-tabs-link>
           <router-link :to="{ name: 'home' }">
             {{ $t('home') }}
-          </router-link>
-        </b-tabs-link>
-        <b-tabs-link>
-          <router-link :to="{ name: 'call' }">
-            {{ $t('call') }}
           </router-link>
         </b-tabs-link>
         <b-tabs-link>
@@ -60,29 +66,6 @@
     </b-container>
   </b-app>
 </template>
-
-<script>
-import AuthLogin from '@/components/auth/Login'
-import useAuth from '@/composables/useAuth'
-
-export default {
-  name: 'app',
-  components: {
-    AuthLogin,
-  },
-  head: {
-    title: 'Home',
-    titleTemplate: (title) => {
-      return title ? title + ' - Shift' : 'Shift'
-    },
-  },
-  setup() {
-    const auth = useAuth()
-
-    return { auth }
-  },
-}
-</script>
 
 <style scoped>
 .logo {

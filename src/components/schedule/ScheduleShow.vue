@@ -1,37 +1,31 @@
+<script setup>
+import { computed, toRefs } from 'vue'
+import { find } from 'lodash'
+
+const props = defineProps({
+  item: Object,
+  staff: Array,
+  day: Number,
+})
+
+const { item, staff } = toRefs(props)
+
+const name = computed(() => {
+  const result = find(staff.value, { key: parseInt(item.value.staff) })
+
+  return result ? result.value : null
+})
+</script>
+
 <template>
   <div class="shift_item" v-if="item">
     <span class="remove" @click="$emit('remove', { day, item })"
-      ><b-icon type="close" :size="10"
+      ><BIcon type="close" :size="10"
     /></span>
     <p class="shift_item-time">{{ item.starttime }} - {{ item.endtime }}</p>
     <p class="shift_item-staff">{{ name }}</p>
   </div>
 </template>
-
-<script>
-import { computed, toRefs } from '@vue/composition-api'
-import { find } from 'lodash'
-
-export default {
-  name: 'schedule-show',
-  props: {
-    item: Object,
-    staff: Array,
-    day: Number,
-  },
-  setup(props) {
-    const { item, staff } = toRefs(props)
-
-    const name = computed(() => {
-      const result = find(staff.value, { key: parseInt(item.value.staff) })
-
-      return result ? result.value : null
-    })
-
-    return { name }
-  },
-}
-</script>
 
 <style scoped>
 .shift_item {
