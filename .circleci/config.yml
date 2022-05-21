@@ -8,6 +8,6 @@ workflows:
           matrix:
             parameters:
               executor:
-                - cypress/base-14.17.0
+                - cypress/base:14.17.0
           yarn: true
           command: yarn test:e2e --headless
