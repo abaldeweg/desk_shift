@@ -4,11 +4,11 @@ orbs:
 executors:
   image:
     docker:
-      - image: 'cypress/base:14.17.0'
+      - image: 'cypress/base:16.14.0'
 workflows:
   test:
     jobs:
       - cypress/run:
           executor: image
           yarn: true
-          command: yarn test:e2e:ci
+          command: yarn build && yarn test:e2e:ci
