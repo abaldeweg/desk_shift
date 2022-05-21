@@ -1,11 +1,14 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.29.0
+executors:
+  image:
+    docker:
+      - image: 'cypress/base:14.17.0'
 workflows:
   test:
     jobs:
       - cypress/run:
-          docker:
-            - image: 'cypress/base:14'
+          executor: image
           yarn: true
-          command: yarn test:e2e --headless
+          command: yarn test:e2e:ci --headless
