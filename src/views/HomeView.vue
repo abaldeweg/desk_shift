@@ -38,7 +38,9 @@ const resetForwarding = () => {
     <div class="phone">{{ $t('phone') }}: {{ currentlyOnDuty.phone }}</div>
     <BButton design="outline_danger" @click="resetForwarding">Reset</BButton>
     <BButton design="primary" @click="saveForwarding">Set</BButton>
-    <p>$t('currently_you_have_to_set_and_reset_a_phone_number_manually')</p>
+    <p>
+      {{ $t('currently_you_have_to_set_and_reset_a_phone_number_manually') }}
+    </p>
   </BContainer>
 
   <BContainer size="m" v-else>
