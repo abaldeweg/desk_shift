@@ -5,9 +5,7 @@ workflows:
   test:
     jobs:
       - cypress/run:
-          matrix:
-            parameters:
-              executor:
-                - cypress/base:14.17.0
+          docker:
+            - image: 'cypress/base:14'
           yarn: true
           command: yarn test:e2e --headless
