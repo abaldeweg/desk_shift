@@ -2,7 +2,7 @@
 import { useTitle } from '@baldeweg/ui'
 import ProfileTheme from '@/components/profile/Theme.vue'
 
-useTitle({ name: 'Profile' })
+useTitle({ title: 'Profile' })
 
 defineProps({
   auth: Object,

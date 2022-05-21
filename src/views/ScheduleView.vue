@@ -11,7 +11,7 @@ defineProps({
   auth: Object,
 })
 
-useTitle({ name: 'Schedule' })
+useTitle({ title: 'Schedule' })
 
 const { shifts } = useShift()
 const { staffMembers } = useStaff()
