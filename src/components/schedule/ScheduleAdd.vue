@@ -16,22 +16,13 @@ const endtime = ref(shift.value.end)
 </script>
 
 <template>
-  <BForm
-    @submit.prevent="
-      $emit('update', {
-        staff,
-        starttime,
-        endtime,
-      })
-    "
-    v-if="staffList && shift"
-  >
-    <BModal @close="$emit('close')">
-      <template #title>
-        {{ $t('add_service') }}
-      </template>
+  <BModal @close="$emit('close')">
+    <template #title>
+      {{ $t('add_service') }}
+    </template>
 
-      <BContainer size="l">
+    <BContainer size="l">
+      <BForm @submit.prevent v-if="staffList && shift">
         <BFormGroup>
           <BFormItem>
             <BFormLabel for="staff">{{ $t('staff') }}</BFormLabel>
@@ -63,17 +54,24 @@ const endtime = ref(shift.value.end)
             <BFormInput id="endtime" type="time" v-model="endtime" />
           </BFormItem>
         </BFormGroup>
-      </BContainer>
 
-      <template #footer>
         <BFormGroup>
           <BFormItem>
-            <BButton design="primary_wide">
+            <BButton
+              design="primary_wide"
+              @click.prevent="
+                $emit('update', {
+                  staff,
+                  starttime,
+                  endtime,
+                })
+              "
+            >
               {{ $t('save') }}
             </BButton>
           </BFormItem>
         </BFormGroup>
-      </template>
-    </BModal>
-  </BForm>
+      </BForm>
+    </BContainer>
+  </BModal>
 </template>
