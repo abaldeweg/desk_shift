@@ -1,7 +1,7 @@
 import { request } from '@/api'
 import { onMounted, ref } from 'vue'
 
-export default function useStaff() {
+export function useStaff() {
   const staffMembers = ref([])
 
   const listStaff = () => {

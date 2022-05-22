@@ -1,7 +1,7 @@
 import { request } from '@/api'
 import { onMounted, ref } from 'vue'
 
-export default function useShift() {
+export function useShift() {
   const shifts = ref([])
 
   const listShifts = () => {

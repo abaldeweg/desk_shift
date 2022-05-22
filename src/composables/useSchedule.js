@@ -2,9 +2,9 @@ import { computed, onMounted, ref } from 'vue'
 import { request } from '@/api'
 import dayjs from 'dayjs'
 import { find, findIndex, findLast, sortBy } from 'lodash'
-import useStaff from './useStaff.js'
+import { useStaff } from './useStaff.js'
 
-export default function useSchedule() {
+export function useSchedule() {
   const { staffMembers } = useStaff()
 
   let schedule = ref({})

@@ -1,8 +1,8 @@
 <script setup>
 import { useTitle } from '@baldeweg/ui'
-import useShift from '@/composables/useShift.js'
-import useStaff from '@/composables/useStaff.js'
-import useSchedule from '@/composables/useSchedule.js'
+import { useShift } from '@/composables/useShift.js'
+import { useStaff } from '@/composables/useStaff.js'
+import { useSchedule } from '@/composables/useSchedule.js'
 import ScheduleAdd from './../components/schedule/ScheduleAdd.vue'
 import ScheduleShow from './../components/schedule/ScheduleShow.vue'
 import { reactive } from 'vue'

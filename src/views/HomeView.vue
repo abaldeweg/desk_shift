@@ -1,7 +1,7 @@
 <script setup>
 import { useTitle } from '@baldeweg/ui'
 import { request } from './../api'
-import useSchedule from './../composables/useSchedule.js'
+import { useSchedule } from './../composables/useSchedule.js'
 import dayjs from 'dayjs'
 
 defineProps({
