@@ -64,9 +64,7 @@ export function useSchedule() {
   const currentlyOnDuty = computed(() => {
     const service = findLast(schedule.value[dayjs().date()], (item) => {
       const now = dayjs().format('HH:mm')
-      if (now >= item.starttime) {
-        return true
-      }
+      if (now >= item.starttime) return true
       return false
     })
 
