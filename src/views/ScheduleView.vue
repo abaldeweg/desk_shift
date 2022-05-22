@@ -42,7 +42,7 @@ const save = (data) => {
   </BContainer>
 
   <BContainer size="m">
-    <table>
+    <table :aria-label="$t('shifts')">
       <thead>
         <tr>
           <th>{{ $t('day') }}</th>
