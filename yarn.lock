@@ -4823,10 +4823,10 @@ vue-eslint-parser@^9.0.1:
     lodash "^4.17.21"
     semver "^7.3.6"
 
-vue-i18n-extract@2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/vue-i18n-extract/-/vue-i18n-extract-2.0.6.tgz#b73802a16f4f6a281136becf702c97fc4e408349"
-  integrity sha512-FfIP8l2u0VsUFWRH8W7i0Tc8DWlwyqL2ZWpQdMl3q34dgH65pekK1mFhVBwP9Enow2Gn8eAvqvCTfqIBbXt03g==
+vue-i18n-extract@2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/vue-i18n-extract/-/vue-i18n-extract-2.0.7.tgz#95798037c2ae57f4ec5fd9d2267d2559bc94e5e8"
+  integrity sha512-i1NW5R58S720iQ1BEk+6ILo3hT6UA8mtYNNolSH4rt9345qvXdvA6GHy2+jHozdDAKHwlu9VvS/+vIMKs1UYQw==
   dependencies:
     cac "^6.7.12"
     dot-object "^2.1.4"
