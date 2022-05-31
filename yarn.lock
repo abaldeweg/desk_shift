@@ -907,10 +907,10 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@baldeweg/ui@0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.1.3.tgz#6e2db683f5865cfcecba4012fb4e23848ab6ecfa"
-  integrity sha512-R3mKqapXcTkgwvONcCes0IJ9zmqFMxxMFtDsRKOaeHNp25s++hxwQURF66sVs3Rmy7La78hopwyq2ijj1huD2Q==
+"@baldeweg/ui@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.1.4.tgz#f2dd01897dadb1ef9bc1d8f38198a7d245d517c3"
+  integrity sha512-eXrwdVmIqLWZtDIDeqdwCGq13xR0FfdBAEBGcL1NQ/fYJKwpAPFIWWDRhZoqGrnlhEVz+0st25Fo2RiPCynC0Q==
   dependencies:
     vue "^3.2.33"
 
