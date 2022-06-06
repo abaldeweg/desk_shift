@@ -907,11 +907,12 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@baldeweg/ui@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.1.5.tgz#0b60efaa6618a1a774b2f6ae7b0acfa16f02bedf"
-  integrity sha512-OEc0gUbINZtXj8oaFAkbM9rZQz0fO45awf6RFQVFfMuEktWjHtO1vYiMNDeVztn3qvK3PPRSYeBHa+tAPMD9LQ==
+"@baldeweg/ui@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.2.0.tgz#a263e8b51beb6ca3f0b675b839346fda0d30bbf6"
+  integrity sha512-x0V/yWPP5WX1VibEeU3WGwUtFLL4RFhGnM55s2slv5m+mPPW9AGG1uEul3syj6abGY1n/JApoCRW9otYyJiImw==
   dependencies:
+    axios "^0.27.2"
     vue "^3.2.33"
 
 "@colors/colors@1.5.0":
@@ -2011,7 +2012,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
-axios@0.27.2:
+axios@0.27.2, axios@^0.27.2:
   version "0.27.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
   integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
