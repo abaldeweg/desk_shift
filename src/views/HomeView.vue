@@ -2,15 +2,12 @@
 import { useTitle } from '@baldeweg/ui'
 import { request } from './../api'
 import { useSchedule } from './../composables/useSchedule.js'
-import dayjs from 'dayjs'
 
 defineProps({
   auth: Object,
 })
 
 useTitle({ title: 'Home' })
-
-const month = dayjs().format('MMMM')
 
 const { currentlyOnDuty } = useSchedule()
 
@@ -47,13 +44,6 @@ const resetForwarding = () => {
     <BAlert type="warning">
       <p>{{ $t('nobody_on_call') }}</p>
     </BAlert>
-  </BContainer>
-
-  <BContainer size="m">
-    <h2>{{ $t('manage') }}</h2>
-    <RouterLink :to="{ name: 'schedule' }">
-      {{ $t('schedule') }} ({{ month }})
-    </RouterLink>
   </BContainer>
 </template>
 

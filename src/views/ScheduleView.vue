@@ -6,9 +6,11 @@ import { useSchedule } from '@/composables/useSchedule.js'
 import ScheduleAdd from './../components/schedule/ScheduleAdd.vue'
 import ScheduleShow from './../components/schedule/ScheduleShow.vue'
 import { reactive } from 'vue'
+import dayjs from 'dayjs'
 
 defineProps({
   auth: Object,
+  month: { type: Number, default: dayjs().format('MMMM') },
 })
 
 useTitle({ title: 'Schedule' })
