@@ -7,10 +7,18 @@ import ScheduleAdd from './../components/schedule/ScheduleAdd.vue'
 import ScheduleShow from './../components/schedule/ScheduleShow.vue'
 import { reactive } from 'vue'
 import dayjs from 'dayjs'
+import { useRouter } from 'vue-router'
 
-defineProps({
+const props = defineProps({
   auth: Object,
-  month: { type: Number, default: dayjs().format('MMMM') },
+  year: {
+    type: Number,
+    default: dayjs().format('YYYY'),
+  },
+  month: {
+    type: Number,
+    default: dayjs().format('MM'),
+  },
 })
 
 useTitle({ title: 'Schedule' })
@@ -36,11 +44,53 @@ const save = (data) => {
   addService(create.chosenDay, data.staff, data.starttime, data.endtime)
   create.showCreateModal = false
 }
+
+const router = useRouter()
+
+const increaseMonth = () => {
+  if (parseInt(props.month) === 12) {
+    router.push({
+      name: 'schedule',
+      params: { year: parseInt(props.year) + 1, month: 1 },
+    })
+    return
+  }
+
+  router.push({
+    name: 'schedule',
+    params: { year: props.year, month: parseInt(props.month) + 1 },
+  })
+}
+
+const decreaseMonth = () => {
+  if (parseInt(props.month) === 1) {
+    router.push({
+      name: 'schedule',
+      params: { year: parseInt(props.year) - 1, month: 12 },
+    })
+    return
+  }
+
+  router.push({
+    name: 'schedule',
+    params: { year: props.year, month: parseInt(props.month) - 1 },
+  })
+}
 </script>
 
 <template>
   <BContainer size="m">
     <h1>{{ $t('schedule') }}</h1>
+  </BContainer>
+
+  <BContainer size="m">
+    <b-button design="text" @click="decreaseMonth">
+      <BIcon type="minus" :size="15" />
+    </b-button>
+    {{ month }}/ {{ year }}
+    <b-button design="text" @click="increaseMonth">
+      <BIcon type="plus" :size="15" />
+    </b-button>
   </BContainer>
 
   <BContainer size="m">

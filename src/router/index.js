@@ -17,10 +17,13 @@ const router = createRouter({
       props: true,
     },
     {
-      path: '/schedule',
+      path: '/schedule/:year?/:month?',
       name: 'schedule',
       component: () => import('../views/ScheduleView.vue'),
-      props: true,
+      props: (route) => ({
+        year: route.params.year || undefined,
+        month: route.params.month || undefined,
+      }),
     },
     {
       path: '/profile',
