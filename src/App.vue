@@ -13,7 +13,7 @@ const auth = useAuth()
   <b-app>
     <b-masthead>
       <b-masthead-item type="center">
-        <router-link :to="{ name: 'home' }">
+        <router-link :to="{ name: 'index' }">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"
@@ -32,8 +32,8 @@ const auth = useAuth()
     <b-container size="m" v-if="auth.state.isAuthenticated">
       <b-tabs>
         <b-tabs-link>
-          <router-link :to="{ name: 'home' }">
-            {{ $t('home') }}
+          <router-link :to="{ name: 'dashboard' }">
+            {{ $t('dashboard') }}
           </router-link>
         </b-tabs-link>
         <b-tabs-link>

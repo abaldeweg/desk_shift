@@ -25,5 +25,6 @@
   "manage": "Verwalten",
   "phone": "Telefon",
   "nobody_on_call": "Aktuell hat niemand Bereitschaft.",
-  "currently_you_have_to_set_and_reset_a_phone_number_manually": "Derzeit musst du eine Telefonnummer manuell festlegen und zurücksetzen."
+  "currently_you_have_to_set_and_reset_a_phone_number_manually": "Derzeit musst du eine Telefonnummer manuell festlegen und zurücksetzen.",
+  "dashboard": "Dashboard"
 }

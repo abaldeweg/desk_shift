@@ -8,12 +8,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'index',
-      redirect: { name: 'home' },
+      redirect: { name: 'dashboard' },
     },
     {
-      path: '/home',
-      name: 'home',
-      component: () => import('../views/HomeView.vue'),
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue'),
       props: true,
     },
     {

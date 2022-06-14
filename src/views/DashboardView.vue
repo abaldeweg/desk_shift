@@ -7,7 +7,7 @@ defineProps({
   auth: Object,
 })
 
-useTitle({ title: 'Home' })
+useTitle({ title: 'Dashboard' })
 
 const { currentlyOnDuty } = useSchedule()
 
