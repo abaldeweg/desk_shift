@@ -8,6 +8,7 @@ import ScheduleShow from './../components/schedule/ScheduleShow.vue'
 import { reactive } from 'vue'
 import dayjs from 'dayjs'
 import { useRouter } from 'vue-router'
+import { filter, sortBy } from 'lodash'
 
 const props = defineProps({
   auth: Object,
@@ -17,7 +18,7 @@ const props = defineProps({
   },
   month: {
     type: Number,
-    default: dayjs().format('MM'),
+    default: dayjs().format('M'),
   },
 })
 
@@ -31,17 +32,23 @@ const { daysInMonth, getDate, schedule, addService, removeService } =
 const create = reactive({
   showCreateModal: false,
   chosenDay: null,
+  chosenDate: null,
   chosenShift: null,
 })
 
 const toggleCreateModal = (day, shift) => {
   create.chosenDay = day
+  create.chosenDate = dayjs()
+    .year(props.year)
+    .month(props.month - 1)
+    .date(day)
+    .format('YYYY-MM-DD')
   create.chosenShift = shifts.value[shift]
   create.showCreateModal = !create.showCreateModal
 }
 
 const save = (data) => {
-  addService(create.chosenDay, data.staff, data.starttime, data.endtime)
+  addService(data)
   create.showCreateModal = false
 }
 
@@ -75,6 +82,31 @@ const decreaseMonth = () => {
     name: 'schedule',
     params: { year: props.year, month: parseInt(props.month) - 1 },
   })
+}
+
+const getDay = (day) => {
+  let start = dayjs()
+    .year(props.year)
+    .month(props.month - 1)
+    .date(day)
+    .hour(0)
+    .minute(0)
+
+  let end = dayjs()
+    .year(props.year)
+    .month(props.month - 1)
+    .date(day)
+    .hour(23)
+    .minute(59)
+    .second(59)
+
+  let filtered = filter(schedule.value, (el) => {
+    return el.start >= start.unix() && el.end <= end.unix()
+  })
+
+  let sorted = sortBy(filtered, ['start', 'end'])
+
+  return sorted
 }
 </script>
 
@@ -123,7 +155,7 @@ const decreaseMonth = () => {
                 :item="item"
                 :staff="staffMembers"
                 :day="day"
-                v-for="(item, index) in schedule[day]"
+                v-for="(item, index) in getDay(day)"
                 :key="'item-' + index"
                 @remove="removeService"
               />
@@ -136,6 +168,9 @@ const decreaseMonth = () => {
     <ScheduleAdd
       :staffList="staffMembers"
       :shift="create.chosenShift"
+      :date="create.chosenDate"
+      :year="year"
+      :month="month"
       v-if="create.showCreateModal"
       @update="save"
       @close="create.showCreateModal = false"

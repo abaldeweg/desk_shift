@@ -1,6 +1,7 @@
 <script setup>
 import { computed, toRefs } from 'vue'
 import { find } from 'lodash'
+import dayjs from 'dayjs'
 
 const props = defineProps({
   item: Object,
@@ -15,6 +16,10 @@ const name = computed(() => {
 
   return result ? result.value : null
 })
+
+const formatDate = (timestamp) => {
+  return dayjs.unix(timestamp).format('HH:mm')
+}
 </script>
 
 <template>
@@ -22,7 +27,9 @@ const name = computed(() => {
     <span class="remove" @click="$emit('remove', { day, item })"
       ><BIcon type="close" :size="10"
     /></span>
-    <p class="shift_item-time">{{ item.starttime }} - {{ item.endtime }}</p>
+    <p class="shift_item-time">
+      {{ formatDate(item.start) }} - {{ formatDate(item.end) }}
+    </p>
     <p class="shift_item-staff">{{ name }}</p>
   </div>
 </template>

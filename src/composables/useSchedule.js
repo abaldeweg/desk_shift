@@ -1,13 +1,13 @@
 import { computed, onMounted, ref } from 'vue'
 import { request } from '@/api'
 import dayjs from 'dayjs'
-import { find, findIndex, findLast, sortBy } from 'lodash'
+import { find, findIndex, findLast } from 'lodash'
 import { useStaff } from './useStaff.js'
 
 export function useSchedule() {
   const { staffMembers } = useStaff()
 
-  let schedule = ref({})
+  let schedule = ref([])
 
   const daysInMonth = computed(() => {
     return dayjs().daysInMonth()
@@ -29,27 +29,17 @@ export function useSchedule() {
     })
   }
 
-  const addService = (day, staff, starttime, endtime) => {
-    if (schedule.value[day] === undefined) {
-      schedule.value[day] = []
-    }
-
-    schedule.value[day].push({
-      staff,
-      starttime,
-      endtime,
-    })
-
-    schedule.value[day] = sortBy(schedule.value[day], ['starttime', 'endtime'])
+  const addService = (data) => {
+    schedule.value.push(data)
 
     update()
   }
 
   const removeService = (data) => {
-    const index = findIndex(schedule.value[data.day], (item) => {
+    const index = findIndex(schedule.value, (item) => {
       return item === data.item
     })
-    schedule.value[data.day].splice(index, 1)
+    schedule.value.splice(index, 1)
 
     update()
   }

@@ -26,5 +26,7 @@
   "phone": "Phone",
   "nobody_on_call": "Currently, nobody is on-call.",
   "currently_you_have_to_set_and_reset_a_phone_number_manually": "Currently, you have to set and reset a phone number manually.",
-  "dashboard": "Dashboard"
+  "dashboard": "Dashboard",
+  "startdate": "Start Date",
+  "enddate": "End Date"
 }
