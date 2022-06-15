@@ -30,5 +30,7 @@
   "startdate": "Anfangsdatum",
   "enddate": "Endtermin",
   "debug": "Debug",
-  "here_you_can_see_which_number_is_actually_set_at_the_provider": "Hier siehst du welche Rufnummer tatsächlich beim Anbieter eingetragen ist."
+  "here_you_can_see_which_number_is_actually_set_at_the_provider": "Hier siehst du welche Rufnummer tatsächlich beim Provider eingetragen ist.",
+  "remove_forwarding": "Weiterleitung entfernen",
+  "reset_forwarding": "Weiterleitung zurücksetzen"
 }

@@ -30,5 +30,7 @@
   "startdate": "Start Date",
   "enddate": "End Date",
   "debug": "Debug",
-  "here_you_can_see_which_number_is_actually_set_at_the_provider": "Here you can see which number is actually set at the provider."
+  "here_you_can_see_which_number_is_actually_set_at_the_provider": "Here you can see which number is actually set at the provider.",
+  "remove_forwarding": "Remove Forwarding",
+  "reset_forwarding": "Reset Forwarding"
 }

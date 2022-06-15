@@ -69,7 +69,7 @@ export function useSchedule() {
 
   const forwardings = ref({})
 
-  const forwarding = () => {
+  const getForwardings = () => {
     return request('get', '/api/call/list').then((response) => {
       if (response.data) {
         forwardings.value = response.data
@@ -77,7 +77,7 @@ export function useSchedule() {
     })
   }
 
-  onMounted(forwarding)
+  onMounted(getForwardings)
 
   return {
     schedule,
@@ -87,5 +87,6 @@ export function useSchedule() {
     removeService,
     currentlyOnDuty,
     forwardings,
+    getForwardings,
   }
 }

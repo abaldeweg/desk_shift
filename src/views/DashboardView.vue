@@ -9,18 +9,22 @@ defineProps({
 
 useTitle({ title: 'Dashboard' })
 
-const { currentlyOnDuty, forwardings } = useSchedule()
+const { currentlyOnDuty, forwardings, getForwardings } = useSchedule()
 
 const saveForwarding = () => {
   request('put', 'api/call/update', {
     destination: currentlyOnDuty.value.phone,
     timeout: 0,
     active: true,
+  }).then(() => {
+    getForwardings()
   })
 }
 
 const resetForwarding = () => {
-  request('put', 'api/call/reset', [])
+  request('put', 'api/call/update', []).then(() => {
+    getForwardings()
+  })
 }
 </script>
 
@@ -33,11 +37,6 @@ const resetForwarding = () => {
     <h2>{{ $t('now_on_call') }}</h2>
     <div class="staff">{{ currentlyOnDuty.value }}</div>
     <div class="phone">{{ $t('phone') }}: {{ currentlyOnDuty.phone }}</div>
-    <BButton design="outline_danger" @click="resetForwarding">Reset</BButton>
-    <BButton design="primary" @click="saveForwarding">Set</BButton>
-    <p>
-      {{ $t('currently_you_have_to_set_and_reset_a_phone_number_manually') }}
-    </p>
   </BContainer>
 
   <BContainer size="m" v-else>
@@ -48,6 +47,15 @@ const resetForwarding = () => {
 
   <b-container size="m">
     <h2>{{ $t('debug') }}</h2>
+    <BButton
+      design="outline_danger"
+      @click="resetForwarding"
+      :style="{ marginRight: '20px' }"
+      >{{ $t('remove_forwarding') }}</BButton
+    >
+    <BButton design="primary" @click="saveForwarding">{{
+      $t('reset_forwarding')
+    }}</BButton>
     <p>
       {{ $t('here_you_can_see_which_number_is_actually_set_at_the_provider') }}
     </p>
