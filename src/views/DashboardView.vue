@@ -61,6 +61,15 @@ const resetForwarding = () => {
     </p>
     <b-code>{{ forwardings }}</b-code>
   </b-container>
+
+  <b-container size="m">
+    <b-alert type="success">
+      <p>
+        This is a very early preview. Please bear in mind there are many
+        features missing and bugs can occur.
+      </p>
+    </b-alert>
+  </b-container>
 </template>
 
 <style scoped>
