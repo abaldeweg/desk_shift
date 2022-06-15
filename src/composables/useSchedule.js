@@ -1,10 +1,16 @@
 import { computed, onMounted, ref } from 'vue'
-import { request } from '@/api'
+import { useRequest } from '@baldeweg/ui'
+import Cookies from 'js-cookie'
 import dayjs from 'dayjs'
 import { find, findIndex, findLast } from 'lodash'
 import { useStaff } from './useStaff.js'
 
 export function useSchedule() {
+  const { config, setAuthHeader, request } = useRequest()
+
+  config.value.baseURL = import.meta.env.VUE_APP_API
+  setAuthHeader(Cookies.get('token'))
+
   const { staffMembers } = useStaff()
 
   let schedule = ref([])

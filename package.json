@@ -11,7 +11,7 @@
     "i18n:report": "vue-i18n-extract report --vueFiles './src/**/*.?(js|vue)' --languageFiles './locales/*.?(json|yml|yaml|js)'"
   },
   "dependencies": {
-    "@baldeweg/ui": "0.1.5",
+    "@baldeweg/ui": "0.2.0",
     "axios": "0.27.2",
     "dayjs": "1.11.3",
     "firebase": "9.8.3",
@@ -30,6 +30,7 @@
     "cypress": "10.0.0",
     "eslint": "8.17.0",
     "eslint-plugin-cypress": "2.12.1",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "9.1.1",
     "prettier": "2.6.2",
     "start-server-and-test": "1.14.0",

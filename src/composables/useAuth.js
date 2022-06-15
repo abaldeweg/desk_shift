@@ -1,5 +1,5 @@
-import { onMounted, reactive } from 'vue'
 import Cookies from 'js-cookie'
+import { onMounted, reactive } from 'vue'
 import { initializeApp } from 'firebase/app'
 import {
   browserSessionPersistence,
