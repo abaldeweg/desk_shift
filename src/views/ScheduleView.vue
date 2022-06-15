@@ -101,7 +101,10 @@ const getDay = (day) => {
     .second(59)
 
   let filtered = filter(schedule.value, (el) => {
-    return el.start >= start.unix() && el.end <= end.unix()
+    return (
+      (el.start >= start.unix() && el.start <= end.unix()) ||
+      (el.end >= start.unix() && el.end <= end.unix())
+    )
   })
 
   let sorted = sortBy(filtered, ['start', 'end'])

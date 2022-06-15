@@ -18,7 +18,7 @@ const name = computed(() => {
 })
 
 const formatDate = (timestamp) => {
-  return dayjs.unix(timestamp).format('HH:mm')
+  return dayjs.unix(timestamp).format('DD.MM. HH:mm')
 }
 </script>
 
@@ -38,7 +38,7 @@ const formatDate = (timestamp) => {
 .shift_item {
   border: 1px solid var(--color-neutral-02);
   border-radius: 10px;
-  width: 200px;
+  width: 250px;
   padding: 20px;
   margin: 10px;
 }
