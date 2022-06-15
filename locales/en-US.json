@@ -28,5 +28,7 @@
   "currently_you_have_to_set_and_reset_a_phone_number_manually": "Currently, you have to set and reset a phone number manually.",
   "dashboard": "Dashboard",
   "startdate": "Start Date",
-  "enddate": "End Date"
+  "enddate": "End Date",
+  "debug": "Debug",
+  "here_you_can_see_which_number_is_actually_set_at_the_provider": "Here you can see which number is actually set at the provider."
 }

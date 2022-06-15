@@ -9,7 +9,7 @@ defineProps({
 
 useTitle({ title: 'Dashboard' })
 
-const { currentlyOnDuty } = useSchedule()
+const { currentlyOnDuty, forwardings } = useSchedule()
 
 const saveForwarding = () => {
   request('put', 'api/call/update', {
@@ -45,6 +45,14 @@ const resetForwarding = () => {
       <p>{{ $t('nobody_on_call') }}</p>
     </BAlert>
   </BContainer>
+
+  <b-container size="m">
+    <h2>{{ $t('debug') }}</h2>
+    <p>
+      {{ $t('here_you_can_see_which_number_is_actually_set_at_the_provider') }}
+    </p>
+    <b-code>{{ forwardings }}</b-code>
+  </b-container>
 </template>
 
 <style scoped>

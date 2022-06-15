@@ -44,17 +44,17 @@ export function useSchedule() {
     update()
   }
 
-  const getDate = (day) => {
-    let year = dayjs().year()
-    let month = dayjs().month() + 1
-
-    return dayjs(year + '-' + month + '-' + day).format('dd. DD.MM.')
+  const getDate = (day, month) => {
+    return dayjs()
+      .month(month - 1)
+      .date(day)
+      .format('dd. DD.MM.')
   }
 
   const currentlyOnDuty = computed(() => {
-    const service = findLast(schedule.value[dayjs().date()], (item) => {
-      const now = dayjs().format('HH:mm')
-      if (now >= item.starttime) return true
+    const service = findLast(schedule.value, (item) => {
+      const now = dayjs().unix()
+      if (now >= item.start) return true
       return false
     })
 
@@ -67,6 +67,18 @@ export function useSchedule() {
     return staff ? staff : null
   })
 
+  const forwardings = ref({})
+
+  const forwarding = () => {
+    return request('get', '/api/call/list').then((response) => {
+      if (response.data) {
+        forwardings.value = response.data
+      }
+    })
+  }
+
+  onMounted(forwarding)
+
   return {
     schedule,
     daysInMonth,
@@ -74,5 +86,6 @@ export function useSchedule() {
     addService,
     removeService,
     currentlyOnDuty,
+    forwardings,
   }
 }

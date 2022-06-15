@@ -139,7 +139,7 @@ const getDay = (day) => {
 
       <tbody>
         <tr v-for="day in daysInMonth" :key="day">
-          <td>{{ getDate(day) }}</td>
+          <td>{{ getDate(day, month) }}</td>
           <td>
             <div class="actions">
               <BButton

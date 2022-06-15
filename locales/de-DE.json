@@ -28,5 +28,7 @@
   "currently_you_have_to_set_and_reset_a_phone_number_manually": "Derzeit musst du eine Telefonnummer manuell festlegen und zurücksetzen.",
   "dashboard": "Dashboard",
   "startdate": "Anfangsdatum",
-  "enddate": "Endtermin"
+  "enddate": "Endtermin",
+  "debug": "Debug",
+  "here_you_can_see_which_number_is_actually_set_at_the_provider": "Hier siehst du welche Rufnummer tatsächlich beim Anbieter eingetragen ist."
 }
