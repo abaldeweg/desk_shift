@@ -100,8 +100,18 @@ const getDay = (day) => {
     .minute(59)
     .second(59)
 
+  let now = dayjs()
+    .year(props.year)
+    .month(props.month - 1)
+    .date(day)
+    .hour(0)
+    .minute(0)
+    .second(0)
+    .unix()
+
   let filtered = filter(schedule.value, (el) => {
     return (
+      (el.start <= now && el.end >= now) ||
       (el.start >= start.unix() && el.start <= end.unix()) ||
       (el.end >= start.unix() && el.end <= end.unix())
     )
