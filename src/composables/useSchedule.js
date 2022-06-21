@@ -67,7 +67,7 @@ export function useSchedule() {
     if (service === undefined) return null
 
     const staff = find(staffMembers.value, {
-      key: parseInt(service.staff),
+      id: service.staff,
     })
 
     return staff ? staff : null

@@ -12,7 +12,7 @@ const props = defineProps({
 const { item, staff } = toRefs(props)
 
 const name = computed(() => {
-  const result = find(staff.value, { key: item.value.staff })
+  const result = find(staff.value, { id: item.value.staff })
 
   return result ? result.value : null
 })

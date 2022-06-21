@@ -70,6 +70,7 @@ const update = () => {
               :items="staffList"
               allow-empty
               v-model="staff"
+              item-key="id"
             />
           </BFormItem>
         </BFormGroup>
