@@ -1,19 +1,22 @@
 # baldeweg/desk_shift
 
-An app to administer shifts, staff and more.
+Shift planer for on-call duty, that is able to set a phone number automatically as a forwarding destination.
 
 ## Repositories
 
 - storage <https://github.com/abaldeweg/desk_storage> - Backend
 - shift <https://github.com/abaldeweg/desk_shift> - UI
 
+## Requirements
+
+- NodeJS 14
 - Docker
 
 ## Get Started
 
 Clone the projects from the git repository and start the container. For an update, check out the new files from the git repository and restart the container.
 
-## Env Vars
+## Env vars
 
 - VUE_APP_API - URL to the backend
 - VUE_APP_I18N_LOCALE - The locale e.g. `en-US`
