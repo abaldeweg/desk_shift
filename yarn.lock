@@ -905,12 +905,13 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@baldeweg/ui@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.2.0.tgz#a263e8b51beb6ca3f0b675b839346fda0d30bbf6"
-  integrity sha512-x0V/yWPP5WX1VibEeU3WGwUtFLL4RFhGnM55s2slv5m+mPPW9AGG1uEul3syj6abGY1n/JApoCRW9otYyJiImw==
+"@baldeweg/ui@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.3.2.tgz#17a17fb282a06d22a41c53d7e9388a4d9a97f5c3"
+  integrity sha512-hOwa9qBRuJENYyUaahB0hCn+X7hXGdZeZui6TwjZH1eRSWTyEb8fFNtY5ZYLPwNlY2dDLreGbdbE6ESahtRYwQ==
   dependencies:
     axios "^0.27.2"
+    firebase "^9.9.0"
     vue "^3.2.33"
 
 "@colors/colors@1.5.0":
@@ -3057,7 +3058,7 @@ find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
-firebase@9.9.1:
+firebase@9.9.1, firebase@^9.9.0:
   version "9.9.1"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-9.9.1.tgz#3a4539ab64176196b981d296f7a0b819bb97530b"
   integrity sha512-1saLd91mmfNWOdP3DpkCAyXcrwB0iJXZoYY8S98ljp1erL+eUPHu+AHw8ImjynVIejSX07NHgla3mQP0bIniZA==
