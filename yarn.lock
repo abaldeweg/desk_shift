@@ -905,10 +905,10 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@baldeweg/ui@0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.3.5.tgz#dfe32fc2cdbe3b9d99c753ea2273326debe7a0f4"
-  integrity sha512-K5u3WYGDm1evEC6IoX/8B5RGaIfyl8wDZCwkxEuDFkMGee35KPSxK9O3lJVIlbCvlkbMErkB/zpBymdh7uP0dA==
+"@baldeweg/ui@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@baldeweg/ui/-/ui-0.4.2.tgz#ab911b0d1ce2f38ae81c8406a5fb003fa6bdd695"
+  integrity sha512-FuWn2lkSnIHTKE9Dnf11W1+Hq2RKRR6tYkvSaWItJj0DFc+u9CyaVIULWraxf4dEikv3EuOgWMv0MulLemSfcA==
   dependencies:
     axios "^0.27.2"
     firebase "^9.9.0"
