@@ -12,7 +12,7 @@ const auth = useAuth()
 <template>
   <b-app>
     <b-masthead>
-      <b-masthead-item type="center">
+      <b-masthead-item position="center">
         <router-link :to="{ name: 'index' }">
           <svg
             xmlns="http://www.w3.org/2000/svg"
