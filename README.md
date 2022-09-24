@@ -21,7 +21,6 @@ Clone the projects from the git repository and start the container. For an updat
 ## Env vars
 
 - VUE_APP_API - URL to the backend
-- VUE_APP_I18N_LOCALE - The locale e.g. `en-US`
 - VUE_APP_BASE_URL - The Base URL, in case the app is installed in a subdirectory
 - VUE_APP_API_KEY - Api key for auth (GCP Identity Platform)
 - VUE_APP_AUTH_DOMAIN - Domain to authenticate against (GCP Identity Platform)

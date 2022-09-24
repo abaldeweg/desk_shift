@@ -1,10 +1,10 @@
 <script setup>
-import { useLocale, useTheme } from '@baldeweg/ui'
+import { useLocale, useColorScheme } from '@baldeweg/ui'
 import AuthLogin from '@/components/auth/Login.vue'
 import useAuth from '@/composables/useAuth.js'
 
 useLocale()
-useTheme()
+useColorScheme()
 
 const auth = useAuth()
 </script>
