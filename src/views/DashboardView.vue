@@ -1,7 +1,6 @@
 <script setup>
 import { useTitle } from '@baldeweg/ui'
 import { useRequest } from '@baldeweg/ui'
-import Cookies from 'js-cookie'
 import { useSchedule } from './../composables/useSchedule.js'
 
 defineProps({
@@ -10,10 +9,7 @@ defineProps({
 
 useTitle({ title: 'Dashboard' })
 
-const { config, setAuthHeader, request } = useRequest()
-
-config.value.baseURL = import.meta.env.VUE_APP_API
-setAuthHeader(Cookies.get('token'))
+const { request } = useRequest()
 
 const { currentlyOnDuty, forwardings, getForwardings } = useSchedule()
 

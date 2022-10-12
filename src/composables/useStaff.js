@@ -1,12 +1,8 @@
 import { useRequest } from '@baldeweg/ui'
-import Cookies from 'js-cookie'
 import { onMounted, ref } from 'vue'
 
 export function useStaff() {
-  const { config, setAuthHeader, request } = useRequest()
-
-  config.value.baseURL = import.meta.env.VUE_APP_API
-  setAuthHeader(Cookies.get('token'))
+  const { request } = useRequest()
 
   const staffMembers = ref([])
 

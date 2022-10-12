@@ -1,12 +1,44 @@
 <script setup>
-import { useLocale, useColorScheme } from '@baldeweg/ui'
+import { useLocale, useColorScheme, useRequest } from '@baldeweg/ui'
+import { watch } from 'vue'
+import { useGCPAuth } from '@/composables/useGCPAuth.js'
 import AuthLogin from '@/components/auth/Login.vue'
-import useAuth from '@/composables/useAuth.js'
+
+const { config, setAuthHeader } = useRequest()
+config.value.baseURL = import.meta.env.VUE_APP_API
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VUE_APP_API_KEY,
+  authDomain: import.meta.env.VUE_APP_AUTH_DOMAIN,
+}
 
 useLocale()
 useColorScheme()
 
-const auth = useAuth()
+const {
+  logout,
+  token,
+  isAuthenticated,
+  user,
+  login,
+  username,
+  password,
+  isLoggingIn,
+} = useGCPAuth(firebaseConfig)
+
+const handleLogin = (event) => {
+  username.value = event.username
+  password.value = event.password
+
+  login()
+}
+
+watch(
+  () => token.value,
+  () => {
+    setAuthHeader(token.value)
+  }
+)
 </script>
 
 <template>
@@ -29,7 +61,7 @@ const auth = useAuth()
       </b-masthead-item>
     </b-masthead>
 
-    <b-container size="m" v-if="auth.state.isAuthenticated">
+    <b-container size="m" v-if="isAuthenticated">
       <b-tabs>
         <b-tabs-link>
           <router-link :to="{ name: 'dashboard' }">
@@ -47,18 +79,18 @@ const auth = useAuth()
           </router-link>
         </b-tabs-link>
         <b-tabs-link>
-          <a href="/logout" @click.prevent="auth.logout">
+          <a href="/logout" @click.prevent="logout">
             {{ $t('logout') }}
           </a>
         </b-tabs-link>
       </b-tabs>
     </b-container>
 
-    <router-view :auth="auth" v-if="auth.state.isAuthenticated" />
+    <router-view :auth="user" v-if="isAuthenticated" />
 
-    <b-container size="s" v-if="!auth.state.isAuthenticated">
+    <b-container size="s" v-if="!isAuthenticated">
       <h1>{{ $t('login') }}</h1>
-      <auth-login />
+      <auth-login @login="handleLogin" :isLoggingIn="isLoggingIn" />
     </b-container>
   </b-app>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit.prevent="auth.login">
+  <b-form @submit.prevent="$emit('login', { username, password })">
     <!-- username -->
     <b-form-group>
       <b-form-item>
@@ -10,7 +10,7 @@
           type="text"
           id="username"
           :placeholder="$t('username')"
-          v-model="auth.state.username"
+          v-model="username"
           autofocus
         />
       </b-form-item>
@@ -26,7 +26,7 @@
           type="password"
           id="password"
           :placeholder="$t('password')"
-          v-model="auth.state.password"
+          v-model="password"
         />
       </b-form-item>
     </b-form-group>
@@ -34,10 +34,10 @@
     <!-- buttons -->
     <b-form-group buttons>
       <b-form-item>
-        <b-button design="primary_wide" v-if="!auth.state.isLoggingIn">
+        <b-button design="primary_wide" v-if="!isLoggingIn">
           {{ $t('login') }}
         </b-button>
-        <b-button design="outline_wide" v-if="auth.state.isLoggingIn">
+        <b-button design="outline_wide" v-if="isLoggingIn">
           <b-spinner size="s" :style="{ margin: 'auto' }" />
         </b-button>
       </b-form-item>
@@ -50,25 +50,20 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue'
-import useAuth from '@/composables/useAuth.js'
+import { ref } from 'vue'
 
 export default {
   name: 'auth-login',
+  props: {
+    isLoggingIn: Boolean,
+  },
   setup() {
+    const username = ref(null)
+    const password = ref(null)
+
     const wrongCredentials = ref(null)
 
-    const auth = useAuth()
-
-    watch(
-      () => auth.state.wrongCredentials,
-      () => {
-        wrongCredentials.value.show()
-        auth.state.wrongCredentials = false
-      }
-    )
-
-    return { wrongCredentials, auth }
+    return { wrongCredentials, username, password }
   },
 }
 </script>
