@@ -4,6 +4,7 @@ import { reactive } from 'vue'
 import dayjs from 'dayjs'
 import { useRouter } from 'vue-router'
 import { filter, sortBy } from 'lodash'
+import html2canvas from 'html2canvas'
 import ScheduleShow from './../components/schedule/ScheduleShow.vue'
 import ScheduleAdd from './../components/schedule/ScheduleAdd.vue'
 import { useSchedule } from '@/composables/useSchedule.js'
@@ -121,6 +122,14 @@ const getDay = (day) => {
 
   return sorted
 }
+
+window.setTimeout(() => {
+  html2canvas(document.querySelector('#shift'), { windowWidth: '500px' }).then(
+    function (canvas) {
+      document.querySelector('#shift_screenshot').appendChild(canvas)
+    }
+  )
+}, 2000)
 </script>
 
 <template>
@@ -138,7 +147,7 @@ const getDay = (day) => {
     </b-button>
   </BContainer>
 
-  <BContainer size="m">
+  <BContainer size="m" id="shift">
     <table :aria-label="$t('shifts')">
       <thead>
         <tr>
@@ -189,6 +198,14 @@ const getDay = (day) => {
       @close="create.showCreateModal = false"
     />
   </BContainer>
+
+  <b-container size="m" highlight>
+    <h2>Screenshot</h2>
+
+    <b-container size="s">
+      <div id="shift_screenshot" />
+    </b-container>
+  </b-container>
 </template>
 
 <style scoped>
